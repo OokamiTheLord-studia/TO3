@@ -34,4 +34,9 @@ public class Vector2D {
     {
         return this.x*v.x+this.y*v.y;
     }
+
+    public double getLength()
+    {
+        return Math.sqrt(x*x+y*y);
+    }
 }

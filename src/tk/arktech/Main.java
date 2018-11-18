@@ -11,10 +11,30 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Vector2D v1 = new Vector2D(10,10);
+        System.out.println("Wektory 2D");
+
+        Vector2D v1 = new Vector2D(10,15);
         Vector2D v2 = new Vector2D(5,5);
 
-        System.out.print(v1.toString() + v2.toString() + Double.toString(v1.dot(v2)));
+        System.out.println(v1.toString() + v2.toString() + Double.toString(v1.dot(v2)));
+
+        System.out.println("Wektory 3D");
+
+        Vector3D v31 = new Vector3D(v1, 4);
+        Vector3D v32 = new Vector3D(v2);
+        Vector3D v33 = new Vector3D(1, 2,3);
+
+        Vector3D v34 = v31.outer(v32);
+
+        Vector3D v35 = new Vector3D(v1).outer(v32);
+
+        System.out.println(v33);
+        System.out.println(v34);
+        System.out.println(v35);
+
+
+
+
 
 
     }

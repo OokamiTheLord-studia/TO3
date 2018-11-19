@@ -18,17 +18,20 @@ public class VectorSpherical {
 
     public VectorSpherical(double phi, double theta, double r)
     {
-        double x = r*Math.cos(theta)*Math.cos(phi);
-        double y = r*Math.cos(theta)*Math.sin(phi);
-        double z = r*Math.sin(theta);
+        double x = r*Math.sin(theta)*Math.cos(phi);
+        double y = r*Math.sin(theta)*Math.sin(phi);
+        double z = r*Math.cos(theta);
 
         this.vector3D = new Vector3D(x, y, z);
     }
 
     public void setPhi(double phi)
     {
-        this.vector3D.setX(this.getR()*Math.cos(this.getTheta())*Math.cos(phi));
-        this.vector3D.setY(this.getR()*Math.cos(this.getTheta())*Math.sin(phi));
+        double r = this.getR();
+        double theta = this.getTheta();
+        
+        this.vector3D.setX(r*Math.sin(theta)*Math.cos(phi));
+        this.vector3D.setY(r*Math.sin(theta)*Math.sin(phi));
     }
 
     public double getPhi()
@@ -38,21 +41,27 @@ public class VectorSpherical {
 
     public void setTheta(double theta)
     {
-        this.vector3D.setX(this.getR()*Math.cos(theta)*Math.cos(this.getPhi()));
-        this.vector3D.setY(this.getR()*Math.cos(theta)*Math.sin(this.getPhi()));
-        this.vector3D.setZ(this.getR()*Math.sin(theta));
+        double r = this.getR();
+        double phi = this.getPhi();
+        
+        this.vector3D.setX(r*Math.sin(theta)*Math.cos(phi));
+        this.vector3D.setY(r*Math.sin(theta)*Math.sin(phi));
+        this.vector3D.setZ(r*Math.cos(theta));
     }
 
     public double getTheta()
     {
-        return Math.asin(this.vector3D.getZ()/this.vector3D.getLength());
+        return Math.acos(this.vector3D.getZ()/this.getR());
     }
 
     public void setR(double r)
     {
-        this.vector3D.setX(r*Math.cos(this.getTheta())*Math.cos(this.getPhi()));
-        this.vector3D.setY(r*Math.cos(this.getTheta())*Math.sin(this.getPhi()));
-        this.vector3D.setZ(r*this.vector3D.getZ()/this.vector3D.getLength());
+        double theta = this.getTheta();
+        double phi = this.getPhi();
+        
+        this.vector3D.setX(r*Math.sin(theta)*Math.cos(phi));
+        this.vector3D.setY(r*Math.sin(theta)*Math.sin(phi));
+        this.vector3D.setZ(r*Math.cos(theta));
 
 
     }

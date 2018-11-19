@@ -28,14 +28,23 @@ public class Main {
 
         Vector3D v35 = new Vector3D(v1).outer(v32);
 
+        System.out.println(v31);
         System.out.println(v33);
         System.out.println(v34);
         System.out.println(v35);
 
+        System.out.println("Wektory Sferyczne");
 
+        VectorSpherical vs0 = new VectorSpherical(1,0.31,3);
+        VectorSpherical vs1 = new VectorSpherical(v31);
 
+        System.out.println(vs0);
+        System.out.println(vs1.outer(v32).getVector3D());
 
-
+        System.out.println(vs1);
+        vs1.setTheta(vs1.getTheta()*0.5);
+        System.out.println(vs1.getVector3D());
+        System.out.println(vs1);
 
     }
 }
